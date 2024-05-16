@@ -1,8 +1,8 @@
 //const BASE_URL = "https://hotel-rovereto-r7blt2y3oa-ew.a.run.app";
 // const BASE_URL = "https://hotel-rovereto-experimental-r7blt2y3oa-ew.a.run.app/"
-const BASE_URL = "https://hotel-rovereto-r7blt2y3oa-nw.a.run.app/"
-//const BASE_URL = "http://localhost:8000";
-
+//const BASE_URL = "https://hotel-rovereto-r7blt2y3oa-nw.a.run.app/"
+const AUTH_URL = "https://authenticator-r7blt2y3oa-nw.a.run.app/token"
+const BASE_URL = "http://localhost:8000/";
 async function fetchAccessToken() {
     // Check if the token already exists and is not expired
     const storedToken = localStorage.getItem("accessToken");
@@ -12,10 +12,8 @@ async function fetchAccessToken() {
             return storedToken; // Token is still valid
         }
     }
-
-    // Fetch a new token if none exists or it has expired
     const response = await fetch(
-        "https://authenticator-r7blt2y3oa-nw.a.run.app/token",
+        AUTH_URL,
         {
             method: "GET",
             headers: {
@@ -35,20 +33,23 @@ async function fetchAccessToken() {
     }
     return token;
 }
-
-fetchAccessToken()
-    .then((accessToken) => {
-        const script = document.createElement("script");
-        script.src = `${BASE_URL}copilot/index.js`;
-        script.onload = () => {
-            window.mountChainlitWidget({
-                chainlitServer: BASE_URL + "/",
-                accessToken: accessToken, // Pass the token here
-                theme: "light", // other configurations
-            });
-        };
-        document.head.appendChild(script);
-    })
-    .catch((error) => {
-        console.error("Error initializing the Copilot widget:", error);
+let accessToken = null
+try {
+    accessToken = await fetchAccessToken()
+}
+catch {
+    console.error("Error initializing the Copilot widget:", error);
+}
+console.assert(BASE_URL.at(-1) == "/", "BASE_URL must end with a slash")
+console.log('Got access token!')
+const script = document.createElement("script");
+script.src = `${BASE_URL}copilot/index.js`;
+script.onload = () => {
+    window.mountChainlitWidget({
+        chainlitServer: BASE_URL + "/",
+        accessToken: accessToken, // Pass the token here
+        theme: "light", // other configurations
     });
+    console.log('Mounted.')
+};
+document.head.appendChild(script);
