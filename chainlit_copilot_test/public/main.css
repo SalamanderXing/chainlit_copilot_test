@@ -1,3 +1,731 @@
 body {
     background-color: #000;
 }
+
+:root {
+  /* ---- ASSIGN BRAND COLOR HERE ---- */
+  --brand: #006d66; 
+  --brand2: 0, 109, 102;
+  --secondary: #c7e29c;
+
+  /* ---- ASSIGN BORDER RADIUS STYLE ---- */
+  --radius: 15px;   /* with px */ 
+
+  /* ---- ASSIGN PFP STYLE HERE ---- */
+  --pfp-background: transparent;             /* image background color (transparent for hotels) */
+  --pfp-shadow: transparent;                /* border shadow (transparent for hotels) */
+  --pfp-radius: 0 0 50% 50%;                          /* border radius */
+  --pfp-size: 45px;                         /* size of the pfp */
+  /* AND REMEMBER TO ADAPT THE HEADER LOGO css-1xlzx9v */
+}
+
+a[href*='https://github.com/Chainlit/chainlit']
+{
+  visibility: hidden;
+}
+
+.watermark {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+.css-gnlfwc {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+button[aria-label="Copy"] {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+.message-avatar:not(.user_avatar) {    /* ALL AVATARS EXCLUDING USER */
+  width: var(--pfp-size) !important;
+  height: var(--pfp-size) !important;
+  border-radius: var(--pfp-radius) !important;
+  text-indent: -9999px; /* there's no other way?! */
+  overflow: hidden !important;
+  box-shadow: rgba(var(--pfp-shadow), 0.4) 0px 0px 10px;
+}
+
+.message-avatar:not(.user_avatar ) > div > img {    /* to properly position the avatar */
+  object-position: top;
+}
+
+.message-avatar.user_avatar {  /* USER AVATAR */
+  opacity: 0 !important;
+  width: var(--pfp-size) !important;
+}
+
+.css-nztacq, .css-ew63j, .css-oph9pn {   /* to remove the cirle within the avatar */
+  width: 100% !important;
+  height: 100% !important;
+  margin-top: 0px !important;
+  border-radius: 0px !important; /* keep it like this */
+  background-color: transparent !important;
+}
+
+.css-1j760ej {
+  /* TO AVOID HOVER TEXT ON THE ICON */
+  display: none;
+}
+
+.user_message {
+  /* USER MESSAGES */
+  background-color: rgb(240, 240, 240) !important;
+  border-radius: var(--radius) var(--radius) 0px var(--radius) !important;
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+  margin-left: auto !important;
+  color: #333 !important;
+  flex-grow: 0 !important;
+  width: auto !important;
+  min-width: auto !important;
+}
+
+.assistant_message {
+  /* ALL CONCIERGE MESSAGES */
+  background-color: var(--brand) !important;
+  border-radius: 0px var(--radius) var(--radius) var(--radius) !important;
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+  padding-top: 10px !important;
+  padding-bottom: 38px !important;
+  margin-right: 1000px !important; /* to ensure concierge messages to expand correctly */
+  color: white;
+  width: 100% !important; /* to ensure concierge messages to expand */
+  box-sizing: border-box; /* to ensure concierge messages to expand */
+  margin-top: 0px !important;
+}
+
+.system_message {
+  /* SYSTEM MESSAGES */
+  background-color: rgba(var(--brand2), 0.75) !important;
+  border-radius: 0px var(--radius) var(--radius) var(--radius) !important;
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+  padding-top: 10px !important;
+  padding-bottom: 35px !important;
+  margin-right: 1000px !important; /* to ensure concierge messages to expand correctly */
+  color: white;
+  width: 100% !important; /* to ensure concierge messages to expand */
+  box-sizing: border-box; /* to ensure concierge messages to expand */
+}
+
+.error_message {
+  /* SYSTEM MESSAGES */
+  background-color: rgb(170, 0, 0) !important;
+  border-radius: 0px var(--radius) var(--radius) var(--radius) !important;
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+  padding-top: 10px !important;
+  padding-bottom: 35px !important;
+  margin-right: 1000px !important; /* to ensure concierge messages to expand correctly */
+  color: white;
+  width: 100% !important; /* to ensure concierge messages to expand */
+  box-sizing: border-box; /* to ensure concierge messages to expand */
+}
+
+.css-1s3oi5q {
+  /* CONCIERGE DIV */
+  background-color: transparent !important;
+}
+
+.css-1vm5bg2 > div:first-child > div {  /* margin of the chatbot main area */
+  margin-top: 30px;
+}
+
+.css-hp68mp { /* to hide useless text above messages */
+  display: none !important;
+}
+
+.css-1iykgd7 {     /* to have the right message width */
+  width: calc(100% - 57px) !important;
+}
+
+.css-uijbxl {
+  /* SPACE BETWEEN MESSAGES */
+  padding-top: 6px !important;
+  padding-bottom: 6px !important;
+  overflow-x: visible !important;
+}
+
+.css-1i31ho7 {
+  /* TO ENSURE VARIABLE WIDTH OF THE USER MESSAGES */
+  width: auto !important;
+  min-width: 0px !important;
+}
+
+.css-1ik4laa {
+  /* TO JUSTIFY MESSAGES TO THE RIGHT */
+  justify-content: flex-end;
+  z-index: 1; /* to fix visibility of first message */
+  background-color: transparent !important;
+  min-height: 13px !important; /* to fix the margin of the running box */
+}
+
+body {
+  /* BACKGROUND COLOR OF THE WHOLE CHATBOT */
+  background-color: white !important;
+}
+
+.css-1vhtqje {
+  /* CANCEL BUTTON when changing language */
+  background: rgba(var(--brand2), 0.2) !important;
+  color: var(--brand) !important;
+  height: 32px;
+  margin-bottom: 8px !important;
+  width: 100% !important;
+  transition: all 0.2s;
+  border-radius: calc(var(--radius)/1.5) !important;
+}
+
+.css-1vhtqje:hover {
+  /* CANCEL BUTTON when changing language */
+  background: rgba(var(--brand2), 0.3) !important;
+}
+
+.css-1ruedog {
+  /* CONFIRM BUTTON when changing language */
+  background-color: var(--brand) !important;
+  color: white !important;
+  border: 1px solid var(--brand) !important;
+  font-weight: 600 !important;
+  border-radius: calc(var(--radius)/1.5) !important;
+  transition: all 0.2s;
+  height: 32px;
+  /* min-width: 266px !important; */
+  text-transform: uppercase !important;
+  width: 100% !important;
+}
+
+.css-1ruedog:hover {
+  background-color: rgba(var(--brand2), 0.75) !important;
+  color: white !important;
+  border-color: transparent !important;
+}
+
+.css-1v84xce {
+  /* TEXT OF THE CHANGE LANGUAGE MESSAGE */
+  font-size: 0.875rem !important;
+  margin-left: 8px !important;
+  margin-right: 8px !important;
+}
+
+.css-17yyao0 {
+  /* BUTTON CREATE NEW CHAT? */
+  font-size: 1.1rem !important;
+  color: var(--brand);
+}
+
+.css-nd13u3 {
+  /* BUTTONS DIRECTION */
+  flex-direction: column !important;
+}
+
+.css-nd13u3 > span {
+  /* BUTTONS STYLING */
+  width: 100%;
+  margin-left: 0px !important;
+}
+
+.css-1s25wxt  {     /* it was .css-1wcna66, then css-9x9nyz */
+  /* TEXT FORMATTING OF ALL TEXT */
+  margin: 0px;
+  width: 100%;
+  min-height: 20px;
+  font-size: 14px !important;
+  line-height: 1.4rem;
+  font-family: Inter;
+  font-weight: 400 !important;
+}
+
+.css-1vo0xo3 {
+  /* PREDEFINED QUESTIONS */
+  background-color: white !important;
+  font-weight: 500 !important;
+  font-size: 13px !important;
+  width: 100% !important;
+  height: 30px !important;
+  border-radius: var(--radius) !important;
+  border: 1px solid var(--brand) !important;
+  color: var(--brand) !important;
+  margin: 2px 5px 5px 0px !important;
+}
+
+.css-1vo0xo3:hover {
+  /* PREDEFINED QUESTIONS - HOVER */
+  opacity: 0.85 !important;
+}
+
+.css-1g7yjtc {
+  /* PREDEFINED QUESTIONS - CONTAINER */
+  background-color: var(--brand);
+  margin-top: -38px !important;
+  padding-top: 10px !important;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 10px;
+  border-radius: 0px 0px var(--radius) var(--radius) !important;
+  box-sizing: border-box;
+  z-index: 2 !important;
+}
+
+.css-1d7zxcn {
+  /* CONTAINER RELATED TO FEEDBACK */
+  position: absolute;
+  color: white !important;
+  z-index: 1 !important;
+  right: 23px;
+  bottom: 12px;
+  margin-top: -10px !important;
+}
+
+.css-1sk7ctj {
+  /* SIZE OF THE THUMBS */
+  width: 14px !important;
+  height: 14px !important;
+  transition: all 200ms ease !important;
+}
+
+.css-1sk7ctj:hover {
+  /* SIZE OF THE THUMBS */
+  width: 17px !important;
+  height: 17px !important;
+}
+
+.css-1deacqj.Mui-disabled {
+  /* TO GET THE RIGHT COLOR ON THE THUMBS UP/DOWN */
+  color: inherit !important;
+}
+
+.css-1deacqj.Mui-disabled {
+  /* TO GET THE RIGHT ACTIONS ON THE THUMBS */
+  pointer-events: inherit !important;
+  cursor: pointer !important;
+}
+
+.css-1g6xeht {
+  /* FEEDBACK POPUP  */
+  border-radius: var(--radius) !important;
+}
+
+.css-149sczi {
+  /* FEEDBACK POPUP HEADER */
+  font-size: 15px;
+  color: var(--brand);
+}
+
+.css-1ty026z {
+  /* FEEDBACK POPUP TEXT */
+  padding-left: 16px !important;
+  padding-right: 16px !important;
+  padding-bottom: 10px !important;
+}
+
+.css-1ty026z > div {
+  /* BUTTONS STYLING */
+  margin-left: 0px !important;
+}
+
+.css-1anv059 {
+  /* FEEDBACK POPUP TEXTAREA */
+  border-radius: calc(var(--radius)/1.5) !important;
+  padding: 5px 0px !important;
+  padding-left: 16px !important;
+  padding-right: 16px !important;
+}
+
+.css-1anv059.Mui-focused {
+  /* FEEDBACK POPUP TEXTAREA ON FOCUS */
+  background-color: rgba(var(--brand2), 0.1) !important;
+}
+
+.css-1anv059.Mui-focused .MuiOutlinedInput-notchedOutline {
+  /* FEEDBACK POPUP TEXTAREA ON FOCUS */
+  border-color: var(--brand) !important;
+}
+
+.css-1i9ix34 {
+  /* FEEDBACK POPUP BUTTON AREA */
+  padding: 0px 16px 16px !important;
+}
+
+.css-1i9ix34 > span {
+  /* SUBMIT FEEDBACK BUTTON STYLING */
+  width: 100%;
+}
+
+element.style {
+  width: 100% !important;
+}
+
+.css-vubbuv {
+  /* SEND ARROW */
+  color: var(--brand) !important;
+  transition: color 300ms ease !important;
+  width: 20px !important;
+}
+
+.css-1yxmbwk > .css-vubbuv {
+  /* STOP ICON */
+  color: var(--brand) !important;
+  transition: color 300ms ease !important;
+  width: 32px !important;
+  height: 32px !important;
+}
+
+.css-1deacqj:hover .css-vubbuv , .css-1yxmbwk:hover .css-vubbuv {
+  /* SEND ARROW AND STOP ICON - HOVER */
+  color: white !important;
+}
+
+.css-1deacqj:active .css-vubbuv , .css-1yxmbwk:active .css-vubbuv {
+  /* SEND ARROW AND STOP ICON - CLICKED */
+  color: white !important;
+}
+
+.css-1deacqj {
+  /* SEND BUTTON */
+  transition: background-color 300ms ease !important;
+  height: 32px;
+  width: 32px;
+  margin-left: -8px !important;
+  padding: 0px !important
+}
+
+.css-1yxmbwk {
+  /* STOP BUTTON */
+  transition: background-color 300ms ease !important;
+  height: 24px;
+  width: 24px;
+  margin-left: -8px !important;
+  margin-right: 4px !important;
+  padding: 0px !important
+}
+
+.css-1el3axn {
+  /* MARGIN LEFT SEND BUTTON */
+  margin-left: 20px;
+}
+
+.css-1deacqj:hover, .css-1yxmbwk:hover {
+  /* SEND BUTTON AND STOP BUTTON - HOVER */
+  background-color: var(--brand) !important;
+}
+
+.css-1deacqj:active , .css-1yxmbwk:active {
+  /* SEND BUTTON AND STOP BUTTON - CLICKED */
+  transform: scale(0.95) !important;
+  transition: transform 150ms ease !important;
+}
+
+.css-kytwbb {
+  /* ANIMATION WHEN SEND BUTTON CLICKED */
+  color: white !important;
+  margin-left: 18px !important;
+}
+
+.basic,
+img {
+  /* boder radius cause its an image */
+  border-radius: var(--radius);
+  /*margin: 8px;*/
+}
+
+[data-sonner-toast] {
+  /* TO ELIMINATE THE RUNNING ELEMENT AT THE TOP */
+  display: none !important;
+}
+
+.css-1bjlosd {   /* it was .css-dhky0u */
+  /* STYLING OF THE LOADER / RUNNING */
+  color: white !important;
+  margin-top: -13px !important;
+  padding-top: 10px !important;
+  background-color: var(--brand) !important;
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+  padding-bottom: 10px !important;
+  border-radius: 0px var(--radius) var(--radius) var(--radius) !important;
+  box-sizing: border-box;
+}
+
+.cc-6xugel {
+  /* rotating element when looking for rooms */
+  margin-left: 0px !important;
+}
+
+.css-42igfv {
+  /* TO HIDE THE POPUP STOP TASK */
+  display: none;
+}
+
+header {
+  /* UNNECESSARY ELEMENT */
+  visibility: hidden !important;
+  display: none !important;
+}
+
+.css-y0i6wm {
+  /* HEADER STYLING */
+  display: inline-flex !important;
+  box-shadow: rgba(0, 0, 0, 0.28) 0px 22px 24px -15px !important;
+  background-color: var(--brand) !important;
+  justify-content: flex-end !important;
+  align-self: auto !important;
+  max-width: unset !important;
+  z-index: 10 !important;
+  height: 73px !important;
+  min-height: 73px !important;
+}
+
+.css-1j99v99 {
+  /* LANGUAGE CONTAINER STYLING */
+  width: auto !important;
+}
+
+.css-iaa929 {
+  /* TO AVOID LANGUAGE POPUP TO APPEAR */
+  display: none !important;
+}
+
+.css-1tudgoq {
+  /* TO ELIMINATE UNNECESSARY BUTTONS IN THE TEXTAREA */
+  display: none !important;
+}
+
+.css-1j8qrh1 textarea {
+  font-size: 16px;  /* font size of the text area without important */
+}
+
+.css-1tmtjlg {
+  /* TO HIDE POPUP WHEN PRESSING CMD-C (or something else, not sure) */
+  display: none;
+}
+
+/* ---- OTHER THINGS ---- */
+
+.MuiTypography-root.MuiTypography-body1.css-kt4rn8 {
+  display: none;
+}
+
+/* ALL THE FOLLOWING OPACITIES ARE TO REMOVE THE PLACEHOLDER TEXT */
+
+textarea::placeholder {
+  opacity: 100 !important; /* Hides the placeholder text */
+}
+
+textarea::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  opacity: 100 !important;
+}
+
+textarea::-moz-placeholder {
+  /* Firefox 19+ */
+  opacity: 100 !important;
+}
+
+textarea:-ms-input-placeholder {
+  /* IE 10+ */
+  opacity: 100 !important;
+}
+
+textarea:-moz-placeholder {
+  /* Firefox 18- */
+  opacity: 100 !important;
+}
+
+.MuiBox-root.css-7hjqgc {
+  width: 40px;
+}
+
+/* SLIDER EDITS */
+
+.css-1j99v99 {
+  /* largest container */
+  margin-left: 16px;
+  margin-right: auto;
+}
+
+.css-osx6pt {
+  min-width: 0px !important;
+}
+
+.css-tloofd {
+  bottom: 5px !important;
+}
+
+.css-osx6pt > .MuiTab-iconWrapper {
+  margin-right: 0px !important; /* TO ALIGN THE SVG */
+}
+
+.css-rl69i > .MuiTab-iconWrapper {
+  margin-right: 0px !important; /* TO ALIGN THE SVG */
+}
+
+.css-1ymqkl1 .MuiTabs-indicator {
+  background-color: var(--brand) !important;
+  width: 35px !important;
+  height: 35px !important;
+  border-radius: 50% !important;
+}
+
+.css-1ymqkl1 .MuiButtonBase-root {
+  width: 35px !important;
+  font-size: 0px !important; /* to hide the it / en text */
+  height: 35px !important;
+  padding-bottom: 5px !important;
+}
+
+.css-rl69i {
+  min-width: 0px !important;
+}
+
+.css-12ds59b {
+  border-radius: 21.5px !important;
+  border: 1px transparent !important;
+  height: 35px;
+  background-color: rgba(255, 255, 255, 0.4) !important;
+}
+
+/* EDITS TO PLACE THE LOGO */
+
+.css-17anmg8 {
+  position: relative !important;
+}
+
+.css-1xlzx9v {
+  /* LOGO CONTAINER */
+  margin-top: 16px !important;      /* ADAPT */
+  margin-bottom: 16px !important;   /* ADAPT */
+  margin-left: 110px !important;    /* ADAPT */
+  height: 41px !important;          /* ADAPT */
+  width: 150px;                     /* ADAPT */
+  background-image: url("./HR-logo.png") !important;
+  background-size: 100% auto; /* Adjust the width automatically to preserve aspect ratio, set height to 100% */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+  background-position: center; /* Centers the image within the container */
+  position: absolute;
+  z-index: 20;
+}
+
+/* ---- ROOM AVAILABILITY ---- */
+
+.css-93z3fs {
+  /* BUTTON PRENOTA ORA */
+  color: var(--brand) !important;
+  background-color: white;
+  text-decoration: none !important;
+  font-weight: 600 !important;
+  border-radius: calc(var(--radius)/1.5);
+  margin-top: 10px !important;
+  margin-bottom: 10px !important;
+  display: flex;
+  justify-content: center;
+  transition: all 0.2s;
+  align-items: center;
+  height: auto;
+  padding-left: 5px;
+  padding-right: 5px;
+  min-height: 30px;
+  opacity: 95%;
+}
+
+.css-93z3fs:hover {
+  /* BUTTON PRENOTA ORA - HOVER */
+  background-color: rgba(255, 255, 255, 0.15);
+  color: white !important;
+}
+
+.css-lfp97g {
+  /* TABELLE */
+  min-width: 0px !important;
+  max-width: 100% !important;
+}
+
+/* ON MOBILE */
+
+/* @media (max-width: 568px) {
+  .css-1j8qrh1 textarea {
+    font-size: 30px !important;
+  }
+} */
+
+/* NEW FOOTER - MADE BY AIKOSMO */
+
+.css-s4jwr4 {  /* it was .css-9yf810 */     
+  /* BOTTOM CONTAINER */
+  padding: 0px !important;
+  padding-top: 16px !important;
+  box-shadow: rgba(255, 255, 255, 0.8) 0px -8px 24px -15px !important;
+  z-index: 10 !important;
+  gap: 0px !important;
+}
+
+.css-1705j0v {    /* MOVED */
+  display: flex !important;
+  visibility: visible !important;
+  background-color: var(--brand);
+  width: 100%;
+  height: 25px;
+  justify-content: center;
+}
+
+.css-1j8qrh1 {    /* MOVED */
+  /* TEXTAREA CONTAINER */
+  border: 0px solid !important;
+  border-top: 1px solid var(--brand) !important;
+  border-radius: 0px !important; /* keep it like this */
+}
+
+a[href*='https://github.com/Chainlit/chainlit'] {   /* ADDED - logo visibility */
+  visibility: visible !important;
+}
+
+.css-pcmo6i {   /* ADDED - by visibility */
+  display: none;
+}
+
+.css-1705j0v > a > svg {  /* ADDED - to remove the chainlit logo */
+  display: none !important;
+}
+
+.css-1705j0v > a {  /* ADDED - to remove the chainlit logo */
+  background-image: url("./footer-logo.png") !important;
+  height: 100% !important;
+  background-size: 70px;
+  background-repeat: no-repeat;
+  background-position: left;
+  margin-left: 16px;
+}
+
+textarea {       /* MOVED - only edited the left padding */
+  /* TEXTAREA FORMATTING */
+  color: #333 !important; /* text color in the textarea */
+  padding-bottom: 0.4rem !important; /* ADJUST TEXTAREA HEIGHT HERE */
+  padding-top: 0.4rem !important; /* padding on top and bottom of the text */
+  height: 24px !important; /* ADJUST TEXTAREA HEIGHT HERE */
+}
+
+#chat-input {  /* THIS IS TO ONLY TARGET THE CHAT INPUT */
+  /* the following is to make the text scroll horizzontally */
+  overflow-x: auto; /* Allows horizontal scrolling */
+  overflow-y: hidden; /* Prevents vertical scrolling */
+  white-space: nowrap; /* Prevents text from wrapping to new line */
+  resize: none; /* Optional: Prevents the user from resizing the textarea */
+}
+
+.css-1fbn754 {   /* adaptation of the textarea margin */
+  width: auto !important;
+  margin-left: 16px;
+}
+
+#settings-dialog {  /* to remove the settings box */
+   display: none !important;
+} 
+
+
+
